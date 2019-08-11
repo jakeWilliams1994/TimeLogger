@@ -35,9 +35,9 @@
             // button1
             // 
             this.button1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.button1.Location = new System.Drawing.Point(648, 36);
+            this.button1.Location = new System.Drawing.Point(404, 15);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(105, 45);
+            this.button1.Size = new System.Drawing.Size(94, 32);
             this.button1.TabIndex = 0;
             this.button1.Text = "Start";
             this.button1.UseVisualStyleBackColor = true;
@@ -45,16 +45,16 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(43, 34);
+            this.textBox1.Location = new System.Drawing.Point(12, 22);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(512, 20);
+            this.textBox1.Size = new System.Drawing.Size(377, 20);
             this.textBox1.TabIndex = 1;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 118);
+            this.ClientSize = new System.Drawing.Size(506, 67);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button1);
             this.Name = "Form1";
