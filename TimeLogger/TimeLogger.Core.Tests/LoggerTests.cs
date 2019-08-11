@@ -34,5 +34,17 @@ namespace TimeLogger.Core.Tests
             logger.GetCurrentTask().StartTime.Should().BeCloseTo(newTaskStartTime);
             logger.GetCurrentTask().EndTime.Should().Be(DateTime.MinValue);
         }
+
+        [Test]
+        public void EndCurrentTask_EndsCurrentTask_WhenCurrentTaskIsActive()
+        {
+            var logger = new Logger();
+            logger.SetCurrentTask("current-task");
+            logger.EndCurrentTask();
+
+            logger.GetCurrentTask().Name.Should().BeEquivalentTo("current-task");
+            logger.GetCurrentTask().StartTime.Should().BeCloseTo(DateTime.Now);
+            logger.GetCurrentTask().EndTime.Should().BeCloseTo(DateTime.Now);
+        }
     }
 }
