@@ -6,7 +6,6 @@ namespace TimeLogger.Core
 {
     public class Logger
     {
-        private Task CurrentTask { get; set; }
         public List<Task> Tasks { get; set; }
 
         public Logger()
@@ -24,6 +23,6 @@ namespace TimeLogger.Core
             Tasks.Add(currentTask);
         }
 
-        public Task GetCurrentTask() => CurrentTask ?? Tasks.Last();
+        public Task GetCurrentTask() => Tasks.Last();
     }
 }
