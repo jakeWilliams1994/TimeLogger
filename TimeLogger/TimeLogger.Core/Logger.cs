@@ -29,7 +29,9 @@ namespace TimeLogger.Core
 
         public void EndCurrentTask()
         {
-            Tasks.Last().EndTime = DateTime.Now;
+            var currentTask = GetCurrentTask();
+            if (currentTask.EndTime == DateTime.MinValue)
+                Tasks.Last().EndTime = DateTime.Now;
         }
 
         private void EndCurrentTask(DateTime endTime)
