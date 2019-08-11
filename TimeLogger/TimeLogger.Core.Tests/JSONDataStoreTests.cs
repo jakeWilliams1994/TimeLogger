@@ -19,7 +19,8 @@ namespace TimeLogger.Core.Tests
             var fileStore = Substitute.For<IFileStore>();
             var jsonDataStore = new JSONDataStore(fileStore);
             jsonDataStore.Store(taskList);
-            fileStore.Received().Store("a", "b");
+            var json = @"[{""Name"":""task"",""StartTime"":""2019-10-16T12:15:00"",""EndTime"":""2019-10-16T12:45:00""}]";
+            fileStore.Received().Store("file", json);
         }
     }
 }

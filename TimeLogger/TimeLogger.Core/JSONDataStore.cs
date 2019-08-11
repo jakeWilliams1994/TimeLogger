@@ -1,4 +1,5 @@
 ﻿using System;
+using Newtonsoft.Json;
 
 namespace TimeLogger.Core
 {
@@ -13,7 +14,8 @@ namespace TimeLogger.Core
 
         public void Store(Task[] taskList)
         {
-            _fileStore.Store("a", "b");
+            var json = JsonConvert.SerializeObject(taskList);
+            _fileStore.Store("file", json);
         }
     }
 }
