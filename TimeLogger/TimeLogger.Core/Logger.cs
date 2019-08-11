@@ -15,14 +15,22 @@ namespace TimeLogger.Core
 
         public void SetCurrentTask(string task)
         {
+            var currentTime = DateTime.Now;
+            EndCurrentTask(currentTime);
             var currentTask = new Task
             {
                 Name = task,
-                StartTime = DateTime.Now
+                StartTime = currentTime
             };
             Tasks.Add(currentTask);
         }
 
         public Task GetCurrentTask() => Tasks.Last();
+
+        private void EndCurrentTask(DateTime endTime)
+        {
+            if (Tasks.Count > 0)
+                Tasks.Last().EndTime = endTime;
+        }
     }
 }

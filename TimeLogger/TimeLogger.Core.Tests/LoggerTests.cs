@@ -12,13 +12,25 @@ namespace TimeLogger.Core.Tests
         {
             var logger = new Logger();
             logger.SetCurrentTask("current-task");
-            var expected = new Task
-            {
-                Name = "current-task",
-                StartTime = DateTime.Now
-            };
-            logger.GetCurrentTask().Name.Should().BeEquivalentTo(expected.Name);
-            logger.GetCurrentTask().StartTime.Should().BeCloseTo(expected.StartTime);
+
+            logger.GetCurrentTask().Name.Should().BeEquivalentTo("current-task");
+            logger.GetCurrentTask().StartTime.Should().BeCloseTo(DateTime.Now);
+        }
+
+        [Test]
+        public void SetCurrentTask_WithTaskName_EndsLastTask()
+        {
+            var logger = new Logger();
+            logger.SetCurrentTask("old-task");
+            var oldTaskStartTime = DateTime.Now;
+            logger.SetCurrentTask("new-task");
+            var newTaskStartTime = DateTime.Now;
+
+            logger.Tasks.First().Name.Should().BeEquivalentTo("old-task");
+            logger.Tasks.First().StartTime.Should().BeCloseTo(oldTaskStartTime);
+            logger.Tasks.First().EndTime.Should().BeCloseTo(newTaskStartTime);
+            logger.GetCurrentTask().Name.Should().BeEquivalentTo("new-task");
+            logger.GetCurrentTask().StartTime.Should().BeCloseTo(newTaskStartTime);
         }
     }
 }
